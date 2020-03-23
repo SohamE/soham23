@@ -1,0 +1,10 @@
+.bor {
+    border: 1px solid rgb(238, 235, 235);
+    border-radius: 12px;
+}
+.noout {
+    outline: none;
+}
+.hei {
+    height: 100px;
+}
