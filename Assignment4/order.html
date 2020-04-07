@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <div class="container jumbotron">
+            <!--modal-->
+            <div id="myModal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog mod" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mod-tit">Checkout!</h5>
+                        </div>
+                        <div class="modal-body">
+                            <label for="address">Enter Address</label>
+                            <input
+                                id="address"
+                                type="text"
+                                class="form-control"
+                                placeholder="address"
+                            />
+                            <label for="card">Enter Address</label>
+                            <input
+                                id="card"
+                                type="text"
+                                class="form-control"
+                                placeholder="card"
+                            />
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary bor col-blue"
+                                data-dismiss="modal"
+                                id="purchase"
+                            >
+                                Purchase
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary bor col-blue"
+                                data-dismiss="modal"
+                                id="col"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end Modal-->
+            <!--Modal recipt-->
+            <div id="myModal1" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog mod" role="document">
+                    <div class="modal-content container">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mod-tit">
+                                Final Recipt
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            <table id="rtable">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="rbody"></tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <p id="details">
+                                This package will be shipped to
+                                <span id="adr"></span> and card details
+                                <span id="totp"></span>
+                            </p>
+                            <button
+                                type="button"
+                                class="btn btn-secondary bor col-blue"
+                                data-dismiss="modal"
+                                id="col1"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end Modal-->
+            <div class="row">
+                <div class="col-12">
+                    <p class="display-4 text-info">Order Processing</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 ">
+                    <p
+                        class="message"
+                        name="message"
+                        id="message"
+                        style="display: none;"
+                    ></p>
+                    <form name="orderForm">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label
+                                    class="col-form-label col-form-label-sm text-info"
+                                    for="itemName"
+                                    >Item Name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control form-control-sm"
+                                    id="itemName"
+                                    placeholder="Please provide the item name."
+                                    required
+                                />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label
+                                    class="col-form-label col-form-label-sm text-info"
+                                    for="itemCode"
+                                    >Code</label
+                                >
+                                <input
+                                    type="text"
+                                    name="code"
+                                    id="itemCode"
+                                    class="form-control form-control-sm"
+                                    placeholder="Please enter the code of the item."
+                                    required
+                                />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label
+                                    class="col-form-label col-form-label-sm text-info"
+                                    for="itemQty"
+                                    >Quantity</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control form-control-sm"
+                                    id="itemQty"
+                                    placeholder="Item quantity."
+                                    required
+                                    min="1"
+                                />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label
+                                    class="col-form-label col-form-label-sm text-info"
+                                    for="itemPrice"
+                                    >Unit Price</label
+                                >
+                                <div class="input-group input-group-sm mb-3">
+                                    <input
+                                        type="text"
+                                        class="form-control form-control-sm"
+                                        id="itemPrice"
+                                        placeholder="Item unit price."
+                                        required
+                                        min="1"
+                                    />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"
+                                            >.00</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            id="add"
+                            type="button"
+                            class="btn btn-info btn-sm float-right"
+                        >
+                            Add Item
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12" style="max-height: 300px; ">
+                    <table
+                        class="table table-sm"
+                        id="ordersTable"
+                        style="overflow-x: scroll;"
+                    >
+                        <thead class="thead">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Item Code</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Net Price</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 bg-active text-info">
+                    <p>No of Items <span id="count"></span></p>
+                    <p>Items Total <span id="cost"></span></p>
+                    <p>Total Payable Amount <span id="Tp"></span></p>
+                </div>
+            </div>
+            <button
+                id="checkout"
+                type="button"
+                class="btn btn-info btn-sm float-right"
+            >
+                CheckOut
+            </button>
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"
+        ></script>
+        <script>
+            $("h1").text("Hi");
+            var i = 1;
+            var items = [];
+            $("#add").on("click", function() {
+                if (validate()) {
+                    return;
+                }
+                var s = $("tbody");
+                var item = {};
+
+                var n = $("#itemName").val();
+                var c = $("#itemCode").val();
+                var q = Number($("#itemQty").val());
+                var p = Number($("#itemPrice").val());
+                var tot = p * q;
+
+                item.id = i;
+                item.name = n;
+                item.code = c;
+                item.qty = q;
+                item.price = p;
+                item.net = tot;
+
+                items.push(item);
+
+                var t =
+                    "<tr>" +
+                    "<td>" +
+                    i +
+                    "</td>" +
+                    "<td>" +
+                    n +
+                    "</td>" +
+                    "<td>" +
+                    c +
+                    "</td>" +
+                    "<td>" +
+                    q +
+                    "</td>" +
+                    "<td>" +
+                    p +
+                    "</td>" +
+                    "<td>" +
+                    tot +
+                    "</td>" +
+                    "/tr>";
+                console.log(items);
+
+                $("table tbody").append(t);
+
+                var sum = 0;
+                var a = 0;
+
+                for (j in items) {
+                    sum = sum + items[j].net;
+                    a = a + items[j].qty;
+                }
+
+                $("#cost").text(sum);
+                $("#count").text(a);
+                $("#Tp").text(sum * 0.18 + sum);
+                console.log(sum + " " + a);
+                i++;
+            });
+
+            var ad;
+            var crd;
+
+            $("#checkout").on("click", function() {
+                if (items.length == 0) {
+                    alert("nothing in cart");
+                    return;
+                }
+                $("#myModal").show();
+            });
+
+            $("#col").on("click", function() {
+                $("#myModal").hide();
+            });
+
+            $("#col1").on("click", function() {
+                $("#myModal1").hide();
+            });
+
+            $("#purchase").on("click", function() {
+                var te = "";
+                ad = $("#address").val();
+                crd = $("#card").val();
+
+                var chk = /^(\d{4}[- ]){3}\d{4}|\d{16}$/;
+
+                if (!crd.match(chk)) {
+                    alert("wrong card details");
+                    return;
+                }
+
+                for (k in items) {
+                    te =
+                        te +
+                        "<tr>" +
+                        "<td>" +
+                        items[k].name +
+                        "</td>" +
+                        "<td>" +
+                        items[k].net +
+                        "</td>" +
+                        "</tr>";
+                }
+                //te = te + "</tr>";
+                console.log(ad + " " + crd);
+
+                $("table #rbody").html(te);
+                $("p #adr").text(ad);
+                $("p #totp").text(crd);
+
+                $("#myModal1").show();
+                $("#myModal").hide();
+            });
+        </script>
+        <script src="Js/order.js"></script>
+    </body>
+</html>

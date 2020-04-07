@@ -1,0 +1,119 @@
+.txt {
+}
+
+.li {
+    width: 20%;
+    display: inline-block;
+}
+.hov {
+    color: hsl(243, 87%, 12%);
+    //padding-left: 10%;
+    text-decoration: none;
+}
+.hov:hover {
+    text-decoration: none;
+    color: hsl(238, 22%, 44%);
+}
+
+.co {
+    color: red;
+}
+.head {
+    font-family: "Raleway", sans-serif;
+    font-size: 50px;
+    color: hsl(243, 87%, 12%);
+}
+.pic1 {
+    width: 100%;
+    padding-left: 5%;
+}
+.body {
+    font-family: "Raleway", sans-serif;
+    font-family: "Open Sans", sans-serif;
+    font-size: 25px;
+    color: hsl(238, 22%, 44%);
+}
+.butn {
+    padding-left: 20%;
+    padding-right: 20%;
+    background-color: hsl(224, 93%, 58%);
+    width: 100%;
+}
+.btn:hover {
+    background-color: hsl(224, 100%, 63%);
+}
+.inp {
+    border-color: black;
+    color: hsl(0, 0%, 75%);
+}
+.mr-tp {
+    margin-top: 7%;
+}
+.wd {
+    width: 100%;
+    padding: 0px;
+}
+.mr-lt {
+    margin-left: 5%;
+}
+.hov1 {
+    color: hsl(170, 45%, 43%);
+    text-underline-position: under;
+    font-size: 20px;
+}
+
+.hov1:hover {
+    text-decoration: none;
+
+    text-underline-position: under;
+}
+.bor {
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 5%;
+    margin-left: 1%;
+    box-shadow: 2px 2px 2px 2px hsl(0, 0%, 90%);
+    font-size: 19px;
+    padding: 30px;
+}
+.pic3 {
+    width: 100%;
+    border-radius: 50%;
+}
+
+h6 {
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0px;
+}
+p1 {
+    margin-top: ;
+    font-size: 15px;
+}
+.pa-r {
+    padding-right: 2%;
+}
+.pa-l {
+    padding-left: 2%;
+}
+.pa-b {
+    padding-bottom: 5%;
+}
+.pa-col {
+    background-color: hsl(238, 22%, 44%);
+    padding: 5%;
+}
+.cl-wt {
+    color: white;
+}
+.btn {
+    padding: 5%;
+}
+.p-6 {
+    padding: 6rem !important;
+}
+li {
+    list-style-type: none;
+    margin-top: 3%;
+}

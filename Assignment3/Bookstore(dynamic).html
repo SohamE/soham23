@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Book Store</title>
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="Css/bookstore.css" />
+        <link rel="stylesheet" href="Css/animate.css" />
+    </head>
+    <body class="">
+        <nav class="navbar navbar-expand-lg sticky-top col-blue">
+            <a class="navbar-brand col1" href="#"> BookStore</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <button
+                            class="nav-link bor col-blue"
+                            href="#"
+                            type="button"
+                            onclick="mycart()"
+                        >
+                            Your Cart
+                        </button>
+                    </li>
+                    <li><p class="buto" id="count"></p></li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button
+                        type="button"
+                        onclick="showall()"
+                        class="btn bor2 bor4"
+                    >
+                        Show All
+                    </button>
+                    <input
+                        type="text"
+                        class="form-control bor3"
+                        placeholder="Search by author"
+                        id="search"
+                    />
+                    <button type="button" onclick="srch()" class="btn bor2">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <form>
+                <!--modal-->
+                <div id="myModal" class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog mod" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mod-tit"></h5>
+                            </div>
+                            <div class="modal-body">
+                                <p id="bod"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary bor col-blue"
+                                    data-dismiss="modal"
+                                    onclick="clo()"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--modal end-->
+                <!--modal_Cart-->
+
+                <div id="cartModal" class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog mod" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header col-blue">
+                                <h5 class="modal-title" id="mod-tit">
+                                    Your Cart
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <table
+                                    class="table table-sm"
+                                    id="ordersTable"
+                                    style="overflow-x: scroll;"
+                                >
+                                    <thead></thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="container col-blue">
+                                <div class="row  ma1">
+                                    <div class="col2 ma2">
+                                        <h5>Total amount -</h5>
+                                    </div>
+                                    <div class="col2 ma3">
+                                        <p id="total"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary bor col-blue po1"
+                                    data-dismiss="modal"
+                                    onclick="clo1()"
+                                >
+                                    Purchase
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary bor col-blue"
+                                    data-dismiss="modal"
+                                    onclick="clo1()"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--modal_Cart end-->
+                <div class="row mar-1">
+                    <div class="col-2 mr-auto" id="col1"></div>
+                    <div class="col-2 mr-auto" id="col2"></div>
+                    <div class="col-2 mr-auto" id="col3"></div>
+                </div>
+            </form>
+        </div>
+        <script src="js/bookstore.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
